@@ -20,8 +20,10 @@
 // }
 
 function findSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
+    //var url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
+    var url = "https://www.songsterr.com/a/ra/songs.json?pattern="
     let searchString = document.getElementById("searchSong").value;
+
     url += searchString;
 
     console.log(searchString)
