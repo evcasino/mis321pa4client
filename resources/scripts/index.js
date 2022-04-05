@@ -18,6 +18,7 @@
 //             html += `</div>`;
 // 		});
 // }
+var Song = {};
 
 function findSongs(){
     //var url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
@@ -53,15 +54,11 @@ function findSongs(){
 		console.log(error);
 	})
 }
-function addSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs";
-    let searchString = document.getElementById("addSong").value;
+function addSongs(id){
+    const url = "https://mis321pa4evc.herokuapp.com/api/Songs" + "/" + id;
+    console.log(url)
     const time = Date.now();
     const Deleted = "n";
-
-    url += searchString;
-
-    console.log(searchString)
     const sendSong = {
         id: id,
         SongTitle: document.getElementById("addSong").value,
@@ -71,7 +68,7 @@ function addSongs(){
     }
 
     fetch(url, {
-        method: "Post",
+        method: "Put",
         headers: {
             "Accept": 'application/json',
             "Content-Type": 'application/json',
@@ -82,7 +79,7 @@ function addSongs(){
     })
 }
 function deleteSongs(id){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/" + "/" + id;
     let searchString = document.getElementById("deleteSong").value;
     const time = Date.now();
     const Deleted = "y";

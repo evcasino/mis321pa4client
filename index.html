@@ -84,7 +84,7 @@
 
     <div id="add" class="container">
         <form onsubmit="return false;">
-            <label class="form-label" for="title">Enter a new song here:</label><br>
+            <label class="form-label" for="addSong">Enter a new song here:</label><br>
             <input class="form-control" type="text" id="addSong" name="title" ><br>
             <button class="btn btn-dark" onclick="addSongs()">Add Song</button>
           </form>
@@ -103,14 +103,14 @@
 
     <div id="delete" class="container">
       <form onsubmit="return false;">
-          <label class="form-label" for="title">Enter song name to delete:</label><br>
+          <label class="form-label" for="deleteSong">Enter song name to delete:</label><br>
           <input class="form-control" type="text" id="deleteSong" name="title" ><br>
           <button class="btn btn-dark" onclick="deleteSongs()">Delete Song</button>
         </form>
   </div>
   <div id="edit" class="container">
     <form onsubmit="return false;">
-        <label class="form-label" for="title">Enter new song title to replace:</label><br>
+        <label class="form-label" for="editSong">Enter new song title to replace:</label><br>
         <input class="form-control" type="text" id="editSong" name="title" ><br>
         <button class="btn btn-dark" onclick="editSongs()">Edit Song</button>
       </form>
