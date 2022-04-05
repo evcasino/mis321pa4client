@@ -1,6 +1,6 @@
 
 function findSongs(){
-    var url = "https://www.songsterr.com/a/ra/songs.json?pattern="
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
     let searchString = document.getElementById("searchSong").value;
 
     url += searchString;
@@ -31,4 +31,88 @@ function findSongs(){
 	}).catch(function(error) {
 		console.log(error);
 	})
+}
+function addSongs(){
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
+    let searchString = document.getElementById("addSong").value;
+    const time = Date.now();
+    const Deleted = "n";
+
+    url += searchString;
+
+    console.log(searchString)
+    const sendSong = {
+        id: id,
+        SongTitle: document.getElementById("title").value,
+        SongTimestamp: time,
+        Deleted: Deleted
+
+    }
+
+    fetch(url, {
+        method: "Post",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(sendSong)
+    }).then((response)=>{
+        Song = sendSong;
+    })
+}
+function deleteSongs(){
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
+    let searchString = document.getElementById("deleteSong").value;
+    const time = Date.now();
+    const Deleted = "y";
+
+    url += searchString;
+
+    console.log(searchString)
+    const sendSong = {
+        id: id,
+        SongTitle: document.getElementById("title").value,
+        SongTimestamp: time,
+        Deleted: Deleted
+
+    }
+
+    fetch(url, {
+        method: "Delete",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(sendSong)
+    }).then((response)=>{
+        Song = sendSong;
+    })
+}
+function editSongs(){
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
+    let searchString = document.getElementById("editSong").value;
+    const time = Date.now();
+    const Deleted = "y";
+
+    url += searchString;
+
+    console.log(searchString)
+    const sendSong = {
+        id: id,
+        SongTitle: document.getElementById("title").value,
+        SongTimestamp: time,
+        Deleted: Deleted
+
+    }
+
+    fetch(url, {
+        method: "Put",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(sendSong)
+    }).then((response)=>{
+        Song = sendSong;
+    })
 }

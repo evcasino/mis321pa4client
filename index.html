@@ -85,8 +85,8 @@
     <div id="add" class="container">
         <form onsubmit="return false;">
             <label class="form-label" for="title">Enter a new song here:</label><br>
-            <input class="form-control" type="text" id="title" name="title" ><br>
-            <button class="btn btn-dark">Add Song</button>
+            <input class="form-control" type="text" id="addSong" name="title" ><br>
+            <button class="btn btn-dark" onclick="addSongs()">Add Song</button>
           </form>
     </div>
 
@@ -97,6 +97,22 @@
             <button class="btn btn-dark" onclick="findSongs()">Find Song</button>
           </form>
     </div>
+
+    <div id="delete" class="container">
+      <form onsubmit="return false;">
+          <label class="form-label" for="title">Enter song name to delete:</label><br>
+          <input class="form-control" type="text" id="deleteSong" name="title" ><br>
+          <button class="btn btn-dark" onclick="deleteSongs()">Delete Song</button>
+        </form>
+  </div>
+  <div id="edit" class="container">
+    <form onsubmit="return false;">
+        <label class="form-label" for="title">Enter new song title to replace:</label><br>
+        <input class="form-control" type="text" id="editSong" name="title" ><br>
+        <button class="btn btn-dark" onclick="editSongs()">Add Song</button>
+      </form>
+</div>
+
 
     <div class="container">
         <div id="searchSongs" class="row"></div>
