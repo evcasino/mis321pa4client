@@ -1,7 +1,6 @@
 
 function findSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
-    let searchString = document.getElementById("searchSong").value;
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs";
 
     url += searchString;
 
@@ -33,8 +32,7 @@ function findSongs(){
 	})
 }
 function addSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
-    let searchString = document.getElementById("addSong").value;
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs";
     const time = Date.now();
     const Deleted = "n";
 
@@ -60,9 +58,8 @@ function addSongs(){
         Song = sendSong;
     })
 }
-function deleteSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
-    let searchString = document.getElementById("deleteSong").value;
+function deleteSongs(id){
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
     const time = Date.now();
     const Deleted = "y";
 
@@ -88,9 +85,8 @@ function deleteSongs(){
         Song = sendSong;
     })
 }
-function editSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs"
-    let searchString = document.getElementById("editSong").value;
+function editSongs(id){
+    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
     const time = Date.now();
     const Deleted = "y";
 
