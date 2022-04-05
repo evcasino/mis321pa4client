@@ -21,6 +21,7 @@
 
 function findSongs(){
     const url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
+    let searchString = document.getElementById("searchSong").value;
     url += searchString;
 
     console.log(searchString)
