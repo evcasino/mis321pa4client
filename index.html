@@ -97,6 +97,9 @@
             <button class="btn btn-dark" onclick="findSongs()">Find Song</button>
           </form>
     </div>
+  <div class="container">
+      <div id="searchSongs" class="row"></div>
+  </div>
 
     <div id="delete" class="container">
       <form onsubmit="return false;">
@@ -109,14 +112,12 @@
     <form onsubmit="return false;">
         <label class="form-label" for="title">Enter new song title to replace:</label><br>
         <input class="form-control" type="text" id="editSong" name="title" ><br>
-        <button class="btn btn-dark" onclick="editSongs()">Add Song</button>
+        <button class="btn btn-dark" onclick="editSongs()">Edit Song</button>
       </form>
 </div>
 
 
-    <div class="container">
-        <div id="searchSongs" class="row"></div>
-    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./resources/scripts/index.js" type="text/JavaScript"></script>

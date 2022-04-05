@@ -1,7 +1,26 @@
+// var playlist = [];
+
+// function populateList(){
+//     const url = "https://mis321pa4evc.herokuapp.com/api/Songs"; 
+//     fetch(url).then(function(response) {
+// 		console.log(response);
+// 		return response.json();
+// 	}).then(function(json) {
+//         playlist = json;
+//         let html = '<select class = '
+//         json.forEach((song) => {
+//             console.log(song.title)
+//             html += `<div class="card col-md-4 bg-dark text-white">`;
+// 			html += `<img src="./resources/images/music.jpeg" class="card-img" alt="...">`;
+// 			html += `<div class="card-img-overlay">`;
+// 			html += `<h5 class="card-title">`+song.title+`</h5>`;
+//             html += `</div>`;
+//             html += `</div>`;
+// 		});
+// }
 
 function findSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs";
-
+    const url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
     url += searchString;
 
     console.log(searchString)
@@ -32,7 +51,7 @@ function findSongs(){
 	})
 }
 function addSongs(){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs";
+    const url = "https://mis321pa4evc.herokuapp.com/api/Songs";
     const time = Date.now();
     const Deleted = "n";
 
@@ -59,7 +78,7 @@ function addSongs(){
     })
 }
 function deleteSongs(id){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
+    const url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
     const time = Date.now();
     const Deleted = "y";
 
@@ -86,7 +105,7 @@ function deleteSongs(id){
     })
 }
 function editSongs(id){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
+    const url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
     const time = Date.now();
     const Deleted = "y";
 
