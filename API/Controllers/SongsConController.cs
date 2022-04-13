@@ -17,7 +17,7 @@ namespace API.Controllers
     public class SongsConController : ControllerBase
     {
         // GET: api/SongsCon
-        //[EnableCors("OpenPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<Song> Get()
         {
@@ -27,7 +27,7 @@ namespace API.Controllers
 
             if(isOpen){
                 MySqlConnection conn = cs.GetConn();
-                string stm = "SELECT * FROM Songs WHERE Deleted = 'n'";
+                string stm = "SELECT * FROM Songs WHERE Deleted = 'n'"; //only deleted values
                 MySqlCommand cmd = new MySqlCommand(stm, conn);
 
                 List<Song> playlist = new List<Song>();
@@ -49,7 +49,7 @@ namespace API.Controllers
         }
 
         // GET: api/SongsCon/5
-        //[EnableCors("OpenPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
@@ -68,7 +68,7 @@ namespace API.Controllers
         }
 
         // PUT: api/SongsCon/5
-       // [EnableCors("OpenPolicy")]
+       [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
         public void Put(int id,[FromBody] Song value) //favorite
         {
@@ -90,7 +90,7 @@ namespace API.Controllers
         }
 
         // DELETE: api/SongsCon/5
-        //[EnableCors("OpenPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id) //delete
         {
