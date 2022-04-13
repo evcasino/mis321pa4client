@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace API.Controllers
 {
-    //[Route("api/[controller]")]
-    [Route("api/SongsCon")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SongsConController : ControllerBase
     {
