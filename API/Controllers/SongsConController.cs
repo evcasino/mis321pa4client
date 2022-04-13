@@ -18,7 +18,7 @@ namespace API.Controllers
     {
         // GET: api/SongsCon
         [EnableCors("OpenPolicy")]
-        [HttpGet]
+        [HttpGet(Name="GetSongsCon")]
         public List<Song> Get()
         {
             databaseUtil.CreateSongTable();
@@ -58,7 +58,7 @@ namespace API.Controllers
 
         // POST: api/SongsCon
         [EnableCors("OpenPolicy")]
-        [HttpPost]
+        [HttpPost(Name="PostSongsCon")]
         public void Post([FromBody] Song value) //add
         {
             value.SongTimestamp = DateTime.Now;
