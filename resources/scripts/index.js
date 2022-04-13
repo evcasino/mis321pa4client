@@ -100,6 +100,10 @@ function unfavorite(id){
     const SongTitle = " ";
     const SongTimestamp = "";
 
+    //url += searchString;
+
+    //console.log(searchString)
+    const sendSong = {
         deleted: Deleted,
         favorite: Favorite,
 
@@ -118,7 +122,9 @@ function unfavorite(id){
         populateList();
     })
 }
-function deleteSong(id){
+function deleteSong(id){ //Idek where to start
+    // var url = "https://mis321pa4evc.herokuapp.com/api/Songs/" + "/" + id;
+    //let searchString = document.getElementById("deleteSong").value;
     const url = baseUrl;
 
     fetch(url + "/" + id, {
@@ -128,6 +134,7 @@ function deleteSong(id){
             "Content-Type": 'application/json',
         }
     }).then((response)=>{
+        //Song = sendSong;
         populateList();
     })
 }
