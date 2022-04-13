@@ -1,5 +1,5 @@
 //const baseUrl = "https://localhost:5001/API/SongsCon";
-const baseUrl = "https://mis321pa4evc.herokuapp.com/API/SongsCon";
+const baseUrl = "https://mis321pa4evc.herokuapp.com/api/SongsCon";
 var playlist = [];
 
 function populateList(){
