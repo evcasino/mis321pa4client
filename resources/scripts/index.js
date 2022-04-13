@@ -1,136 +1,133 @@
-// var playlist = [];
+//const baseUrl = "https://localhost:5001/API/SongsCon";
+const baseUrl = "https://mis321pa4evc.herokuapp.com/api/SongsCon";
+var playlist = [];
 
-// function populateList(){
-//     const url = "https://mis321pa4evc.herokuapp.com/api/Songs"; 
-//     fetch(url).then(function(response) {
-// 		console.log(response);
-// 		return response.json();
-// 	}).then(function(json) {
-//         playlist = json;
-//         let html = '<select class = '
-//         json.forEach((song) => {
-//             console.log(song.title)
-//             html += `<div class="card col-md-4 bg-dark text-white">`;
-// 			html += `<img src="./resources/images/music.jpeg" class="card-img" alt="...">`;
-// 			html += `<div class="card-img-overlay">`;
-// 			html += `<h5 class="card-title">`+song.title+`</h5>`;
-//             html += `</div>`;
-//             html += `</div>`;
-// 		});
-// }
-var Song = {};
-
-function findSongs(){
-    //var url = "https://mis321pa4evc.herokuapp.com/api/Songs/";
-    var url = "https://www.songsterr.com/a/ra/songs.json?pattern="
-    let searchString = document.getElementById("searchSong").value;
-
-    url += searchString;
-
-    console.log(searchString)
-
+function populateList(){
+    const url = baseUrl; 
     fetch(url).then(function(response) {
 		console.log(response);
 		return response.json();
 	}).then(function(json) {
-        console.log(json)
-        let html = ``;
-		json.forEach((song) => {
-            console.log(song.title)
+        playlist = json;
+        console.log(playlist);
+        let html = '';
+        let rid = "";
+        json.forEach((Song) => {
+            
+            console.log(Song);
+            rid = Song.songID;
+            console.log(rid);
             html += `<div class="card col-md-4 bg-dark text-white">`;
 			html += `<img src="./resources/images/music.jpeg" class="card-img" alt="...">`;
 			html += `<div class="card-img-overlay">`;
-			html += `<h5 class="card-title">`+song.title+`</h5>`;
+			
+            if (Song.favorite == "n")
+            {
+                html += `<h5 class="card-title" >`+Song.songTitle +`</h5>`;
+                html += '<button id= '+Song.songID+' class="btn btn-success" onclick="favorite(id)">Favorite</button>';
+                html += '<button id= '+Song.songID+' class="btn btn-danger" onclick="deleteSong(id)">Delete</button>';
+            }
+            else if (Song.favorite == "y")
+            {
+                html += `<h5 class="card-title">`+Song.songTitle + "⭐" +`</h5>`;
+                html += '<button id= '+Song.songID+' class="btn btn-warning" id = "selectId" onclick="unfavorite(id)">Unfavorite</button>';
+                //html += `<option value = ${Song.songID}> ${Song.songID} </option> `
+            }
             html += `</div>`;
             html += `</div>`;
+            //console.log(document.getElementById("faveId").value);
 		});
-		
-        if(html === ``){
-            html = "No Songs found :("
-        }
-		document.getElementById("searchSongs").innerHTML = html;
+        document.getElementById("allSongs").innerHTML = html;
+}).catch(function(error) {
+    console.log(error);
+})
 
-	}).catch(function(error) {
-		console.log(error);
-	})
 }
-function addSongs(id){
-    const url = "https://mis321pa4evc.herokuapp.com/api/Songs" + "/" + id;
+var Song = [];
+function addSongs(){
+    const url = baseUrl;
     console.log(url)
-    const time = Date.now();
+    const today = new Date();
     const Deleted = "n";
     const sendSong = {
-        id: id,
-        SongTitle: document.getElementById("addSong").value,
-        SongTimestamp: time,
-        Deleted: Deleted
+        
+        songTitle: document.getElementById("addSong").value,
+        deleted: Deleted,
 
     }
 
     fetch(url, {
-        method: "Put",
+        method: "POST",
         headers: {
             "Accept": 'application/json',
             "Content-Type": 'application/json',
         },
         body: JSON.stringify(sendSong)
     }).then((response)=>{
-        Song = sendSong;
+        populateList();
+        console.log(response);
     })
 }
-function deleteSongs(id){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/" + "/" + id;
-    let searchString = document.getElementById("deleteSong").value;
-    const time = Date.now();
-    const Deleted = "y";
 
-    url += searchString;
-
-    console.log(searchString)
+function favorite(id){
+    const url = baseUrl;
+    console.log(id + " testID favorite method");
+    const Deleted = "n";
+    const Favorite = "y";
     const sendSong = {
-        id: id,
-        SongTitle: document.getElementById("deleteSong").value,
-        SongTimestamp: time,
-        Deleted: Deleted
+        deleted: Deleted,
+        favorite: Favorite,
 
     }
+    console.log(sendSong);
 
-    fetch(url, {
-        method: "Delete",
+    fetch(url + "/" + id, {
+        method: "PUT",
         headers: {
             "Accept": 'application/json',
             "Content-Type": 'application/json',
         },
         body: JSON.stringify(sendSong)
     }).then((response)=>{
-        Song = sendSong;
+        populateList();
     })
 }
-function editSongs(id){
-    var url = "https://mis321pa4evc.herokuapp.com/api/Songs/"+id;
-    let searchString = document.getElementById("editSong").value;
-    const time = Date.now();
-    const Deleted = "y";
+function unfavorite(id){
+    const url = baseUrl;
+    console.log(id + " testID favorite method");
+    const Deleted = "n";
+    const Favorite = "n";
+    const SongTitle = " ";
+    const SongTimestamp = "";
 
-    url += searchString;
-
-    console.log(searchString)
-    const sendSong = {
-        id: id,
-        SongTitle: document.getElementById("editSong").value,
-        SongTimestamp: time,
-        Deleted: Deleted
+        deleted: Deleted,
+        favorite: Favorite,
 
     }
+    console.log(sendSong);
 
-    fetch(url, {
-        method: "Put",
+    fetch(url + "/" + id, {
+        method: "PUT",
         headers: {
             "Accept": 'application/json',
             "Content-Type": 'application/json',
         },
         body: JSON.stringify(sendSong)
     }).then((response)=>{
-        Song = sendSong;
+        //Song = sendSong;
+        populateList();
+    })
+}
+function deleteSong(id){
+    const url = baseUrl;
+
+    fetch(url + "/" + id, {
+        method: "DELETE",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        }
+    }).then((response)=>{
+        populateList();
     })
 }

@@ -8,7 +8,7 @@
     <link href="./resources/css/index.css" rel="stylesheet">
     <title>Big Al's BDS Playlist</title>
 </head>
-<body>
+<body onload = "populateList()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Big Al's BDS Playlist</a>
@@ -21,7 +21,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#cards">Playlist</a>
+                <a class="nav-link" href="#cards" onclick = "populateList()">Playlist</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#add">Add a Song</a>
@@ -38,49 +38,11 @@
           <img id="bigAlStadium" src="./resources/images/bigAl.jpeg">
         </div>
       </div>
-
-      <div id="cards" class="container">
-        <div class="row">
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Sweet Home Alabama</h5>
-                </div>
-            </div>
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Yea Alabama!</h5>
-                </div>
-            </div>
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Thunderstruck</h5>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Friends in Low Places</h5>
-                </div>
-            </div>
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Mr. Brightside</h5>
-                </div>
-            </div>
-            <div class="card col-md-4 bg-dark text-white">
-                <img src="./resources/images/music.jpeg" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Dixieland Delight</h5>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container">
+      <div id="allSongs" class="row"></div>
+      
+  </div>
+    
 
     <div id="add" class="container">
         <form onsubmit="return false;">
@@ -89,32 +51,6 @@
             <button class="btn btn-dark" onclick="addSongs()">Add Song</button>
           </form>
     </div>
-
-    <div id="search" class="container">
-        <form onsubmit="return false;">
-            <label class="form-label" for="searchSong">Find a song here:</label><br>
-            <input class="form-control" type="text" id="searchSong" name="title" ><br>
-            <button class="btn btn-dark" onclick="findSongs()">Find Song</button>
-          </form>
-    </div>
-  <div class="container">
-      <div id="searchSongs" class="row"></div>
-  </div>
-
-    <div id="delete" class="container">
-      <form onsubmit="return false;">
-          <label class="form-label" for="deleteSong">Enter song name to delete:</label><br>
-          <input class="form-control" type="text" id="deleteSong" name="title" ><br>
-          <button class="btn btn-dark" onclick="deleteSongs()">Delete Song</button>
-        </form>
-  </div>
-  <div id="edit" class="container">
-    <form onsubmit="return false;">
-        <label class="form-label" for="editSong">Enter new song title to replace:</label><br>
-        <input class="form-control" type="text" id="editSong" name="title" ><br>
-        <button class="btn btn-dark" onclick="editSongs()">Edit Song</button>
-      </form>
-</div>
 
 
     
